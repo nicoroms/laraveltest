@@ -13,7 +13,7 @@ class CreaTablaEmpresa extends Migration
      */
     public function up()
     {
-        //acá ceramos la tabla para la empresa, con los 3 atributos necesarios, además de ID, para no confundir nombres.
+        //acá creamos la tabla para la empresa, con los 3 atributos necesarios, además de ID, para duplicar nombres de empresa sin problema.
 		Schema::create('empresa', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombre')->required();

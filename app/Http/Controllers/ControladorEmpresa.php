@@ -14,7 +14,7 @@ class ControladorEmpresa extends Controller
      */
     public function index()
     {
-        //
+        //Lista todas las empresas
 		return Empresa::all();
     }
 
@@ -38,7 +38,7 @@ class ControladorEmpresa extends Controller
     {
 		//Instanciamos la clase Empresa
         $empresa = new Empresa;
-        //Declaramos el nombre con el nombre enviado en el request
+        //Declaramos el nombre con lo enviado en el request
         $empresa->nombre = $request->nombre;
 		$empresa->numero_trabajadores = $request->numero_trabajadores;
         //Guardamos el cambio en nuestro modelo
@@ -55,7 +55,7 @@ class ControladorEmpresa extends Controller
      */
     public function show($id)
     {
-        //Solicitamos al modelo la empresa con el id solicitado por GET.
+        //Solicitamos al API la empresa con el id entregado por GET.
         return Empresa::where('id', $id)->get();
     }
 
@@ -67,7 +67,7 @@ class ControladorEmpresa extends Controller
      */
     public function edit($id)
     {
-        //
+        //Se utiliza 'update' en su lugar.
     }
 
     /**
@@ -79,7 +79,7 @@ class ControladorEmpresa extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //Se actualiza la empresa que fue solicitada por medio de la ID.
 		$empresa = Empresa::findOrFail($id);
 		$empresa->update($request->all());
 		
@@ -94,6 +94,7 @@ class ControladorEmpresa extends Controller
      */
     public function destroy($id)
     {
+		//Se elimina la empresa que fue solicitada por medio de la ID.
         Empresa::find($id)->delete();
 
 		return response()->json(null, 204);
